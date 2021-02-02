@@ -39,8 +39,6 @@ func makeKeyedAlphabet(key string) ([]rune, error) {
 		newAlphabet = append([]rune{char}, newAlphabet...)
 	}
 
-	fmt.Println(string(newAlphabet))
-
 	return newAlphabet, nil
 }
 
