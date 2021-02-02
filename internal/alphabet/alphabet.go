@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-var StandardAlphabet = []rune{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}
+var Standard = []rune{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}
 
 func GetAlphabetChar(i int, ab []rune) rune {
 	for i >= 26 || i < 0 {
@@ -30,5 +30,5 @@ func GetCharNumber(x rune, ab []rune) int {
 var replacementRegex = regexp.MustCompile(`[^A-Z ]`)
 
 func FilterNonAlphabet(in string) string {
-	return strings.TrimSpace(replacementRegex.ReplaceAllString(in, ""))
+	return strings.TrimSpace(replacementRegex.ReplaceAllString(strings.ToUpper(in), ""))
 }
