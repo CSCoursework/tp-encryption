@@ -1,14 +1,12 @@
 package caesar
 
 import (
-	"regexp"
 	"strings"
 
 	"github.com/CSCoursework/tp-encryption/internal/alphabet"
 )
 
-
-func DoCoreCaesar(text string, modifier int, ab []rune) string {
+func DoCoreCaesar(text string, modifier int, lookupab, ab []rune) string {
 	// make upper case and filter out non-space and non-alphanumeric characters
 	text = strings.ToUpper(text)
 	text = alphabet.FilterNonAlphabet(text)
@@ -16,7 +14,7 @@ func DoCoreCaesar(text string, modifier int, ab []rune) string {
 	var o []rune
 	for _, char := range text {
 		if char != ' ' {
-			cn := alphabet.GetCharNumber(char, ab)
+			cn := alphabet.GetCharNumber(char, lookupab)
 			o = append(o, alphabet.GetAlphabetChar(cn+modifier, ab))
 		} else {
 			o = append(o, ' ')
@@ -26,9 +24,9 @@ func DoCoreCaesar(text string, modifier int, ab []rune) string {
 }
 
 func Encrypt(plaintext string, shift int) string {
-	return DoCoreCaesar(plaintext, shift, alphabet.StandardAlphabet)
+	return DoCoreCaesar(plaintext, shift, alphabet.Standard, alphabet.Standard)
 }
 
 func Decrypt(ciphertext string, shift int) string {
-	return DoCoreCaesar(ciphertext, -shift, alphabet.StandardAlphabet)
+	return DoCoreCaesar(ciphertext, -shift, alphabet.Standard, alphabet.Standard)
 }
