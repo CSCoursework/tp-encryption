@@ -54,5 +54,5 @@ func Decrypt(ciphertext, key string, shift int) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return caesar.DoCoreCaesar(ciphertext, -shift, alphabet.Standard, ab), nil
+	return caesar.DoCoreCaesar(ciphertext, -shift, ab, alphabet.Standard), nil
 }
