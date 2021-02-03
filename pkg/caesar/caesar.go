@@ -15,7 +15,7 @@ func DoCoreCaesar(text string, modifier int, lookupab, ab []rune) string {
 	for _, char := range text {
 		if char != ' ' {
 			cn := alphabet.GetCharNumber(char, lookupab)
-			o = append(o, alphabet.GetAlphabetChar(cn+modifier, ab))
+			o = append(o, alphabet.GetAlphabetChar(alphabet.FixBounds(cn+modifier), ab))
 		} else {
 			o = append(o, ' ')
 		}

@@ -7,7 +7,8 @@ import (
 
 var Standard = []rune{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}
 
-func GetAlphabetChar(i int, ab []rune) rune {
+// FixBounds takes an integer and puts it in the range 0 <= i < 26
+func FixBounds(i int) int {
 	for i >= 26 || i < 0 {
 		if i >= 26 {
 			i -= 26
@@ -15,6 +16,11 @@ func GetAlphabetChar(i int, ab []rune) rune {
 			i += 26
 		}
 	}
+	return i
+}
+
+func GetAlphabetChar(i int, ab []rune) rune {
+	i = FixBounds(i)
 	return ab[i]
 }
 
