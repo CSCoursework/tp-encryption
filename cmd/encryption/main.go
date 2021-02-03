@@ -5,6 +5,7 @@ import (
 
 	"github.com/CSCoursework/tp-encryption/pkg/caesar"
 	"github.com/CSCoursework/tp-encryption/pkg/keyedcaesar"
+	"github.com/CSCoursework/tp-encryption/pkg/vigenere"
 )
 
 func main() {
@@ -37,6 +38,18 @@ func main() {
 
 	fmt.Println("plaintext", p)
 	fmt.Println("key", s, k)
+	fmt.Println("ciphertext", c)
+	fmt.Println("decryption", d)
+
+	fmt.Println("\nVIGENÈRE")
+
+	p = "Hello world"
+	k = "ermahgawd"
+	c = vigenere.Encrypt(p, k)
+	d = vigenere.Decrypt(c, k)
+
+	fmt.Println("plaintext", p)
+	fmt.Println("key", k)
 	fmt.Println("ciphertext", c)
 	fmt.Println("decryption", d)
 }
