@@ -2,7 +2,6 @@ package keyedcaesar
 
 import (
 	"errors"
-	"fmt"
 	"strings"
 
 	"github.com/CSCoursework/tp-encryption/internal/alphabet"
@@ -18,7 +17,7 @@ func makeKeyedAlphabet(key string) ([]rune, error) {
 	newAlphabet := make([]rune, len(alphabet.Standard))
 	copy(newAlphabet, alphabet.Standard)
 
-	for keyIdx := len(key)-1; keyIdx >= 0; keyIdx -= 1 {
+	for keyIdx := len(key) - 1; keyIdx >= 0; keyIdx -= 1 {
 		char := rune(key[keyIdx])
 		if seenBefore := seen[char]; seenBefore {
 			return nil, errors.New("duplicated character in key")
